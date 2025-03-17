@@ -1,0 +1,58 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>IT-транслит</title>
+<script>
+function do_trans()
+{
+    let rus = document.getElementById('rus').value;
+    document.getElementById('lat').value = module.exports.trans(rus, document.getElementById('use_q').checked);
+}
+
+function do_reverse()
+{
+    let lat = document.getElementById('lat').value;
+    document.getElementById('rus').value = module.exports.reverse(lat);
+}
+
+var module = {};
+</script>
+<script crossorigin src="https://cdn.jsdelivr.net/gh/it-translit/js@master/it_translit.js"></script>
+
+<style type="text/css">
+textarea, label {
+    font-size: 14px;
+    font-family: Verdana, sans-serif;
+    line-height: 160%;
+}
+textarea {
+    width:100%;
+    padding: 7px;
+    border-color: #BBB;
+}
+textarea:focus { outline: none !important; }
+</style>
+</head>
+<body>
+<div style="margin: 0 auto; width: 80%">
+<table border="0" width="100%">
+    <tr>
+        <td width="50%">
+            <label>
+                <input type="checkbox" id="use_q" onchange="do_trans()">
+                Использовать q вместо '
+            </label>
+        </td>
+    </tr>
+    <tr>
+        <td width="50%">
+            <textarea id="rus" rows="30" oninput="do_trans()"></textarea>
+        </td>
+        <td>
+            <textarea id="lat" rows="30" oninput="do_reverse()"></textarea>
+        </td>
+    </tr>
+</table>
+</div>
+</body>
+</html>
