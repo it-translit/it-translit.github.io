@@ -6,7 +6,7 @@
 function do_trans()
 {
     let rus = document.getElementById('rus').value;
-    document.getElementById('lat').value = module.exports.trans(rus, document.getElementById('use_q').checked);
+    document.getElementById('lat').value = module.exports.trans(rus, {use_q: document.getElementById('use_q').checked});
 }
 
 function do_reverse()
